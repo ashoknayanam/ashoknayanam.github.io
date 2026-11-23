@@ -11,8 +11,17 @@
 #interests{--accent:#8b4729;--wash:#fff0de;--edge:#efd5b9}
 #contact{background:linear-gradient(115deg,#133e46,#205b65);--accent:white;--edge:#52939a;--wash:#205862;align-items:center;color:white}
 #contact>div{display:flex;flex-wrap:wrap;gap:12px}#contact a{border-color:#a1d0ca;background:#d9f4ea;color:#143d39;padding:12px 24px;transition:transform .2s,background .2s}#contact a:hover,#contact a:focus-visible{transform:translateY(-3px);background:white;color:#143d39}
-@keyframes rise{from{opacity:.35;transform:translateY(22px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:no-preference){.section.arrived{animation:rise .65s ease-out both}}
+main { overflow-x: clip; }
+main > section { --slide-distance: clamp(16px, 5vw, 74px); }
+main > section:nth-of-type(even) { --entry-x: calc(-1 * var(--slide-distance)); }
+main > section:nth-of-type(odd) { --entry-x: var(--slide-distance); }
+@keyframes section-entry {
+  from { opacity: .12; transform: translateX(var(--entry-x)); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  main > .arrived { animation: section-entry .72s cubic-bezier(.18,.75,.25,1) both; }
+}
 header nav { gap: .55rem; }
 header nav a {
   --button-fill: #ccebdc;
@@ -114,13 +123,13 @@ rail.onscroll=()=>document.querySelector('output').textContent=(current()+1)+' /
 const showcase=rail.closest('.showcase');
 setInterval(()=>{if(playing&&!document.hidden&&!showcase.matches(':hover,:focus-within'))move(1)},7500);
 reduced.addEventListener('change',()=>{if(reduced.matches)stopSliding()});
-if('IntersectionObserver' in window){
-  const observer=new IntersectionObserver(entries=>{
-    for(const entry of entries){
-      if(entry.isIntersecting){entry.target.classList.add('arrived');observer.unobserve(entry.target)}
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      entry.target.classList.toggle('arrived', entry.isIntersecting);
     }
-  },{threshold:0.08});
-  document.querySelectorAll('.section').forEach(section=>observer.observe(section));
+  }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
+  document.querySelectorAll('main > section:not(.hero)').forEach(section => observer.observe(section));
 }
 
 const experienceLists = document.querySelectorAll('#experience details');
