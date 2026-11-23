@@ -13,6 +13,38 @@
 #contact>div{display:flex;flex-wrap:wrap;gap:12px}#contact a{border-color:#a1d0ca;background:#d9f4ea;color:#143d39;padding:12px 24px;transition:transform .2s,background .2s}#contact a:hover,#contact a:focus-visible{transform:translateY(-3px);background:white;color:#143d39}
 @keyframes rise{from{opacity:.35;transform:translateY(22px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:no-preference){.section.arrived{animation:rise .65s ease-out both}}
+header nav { gap: .55rem; }
+header nav a {
+  --button-fill: #ccebdc;
+  --button-ink: #154a37;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: .55rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--button-ink) 22%, transparent);
+  border-radius: 999px;
+  background: var(--button-fill);
+  color: var(--button-ink);
+  font-weight: 650;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 #ffffff45, 0 2px 3px #192b290d;
+}
+header nav a[href="#education"] { --button-fill: #e6d9fa; --button-ink: #563773; }
+header nav a[href="#interests"] { --button-fill: #ffdfc4; --button-ink: #743c20; }
+header nav a[href="#contact"] { --button-fill: #175359; --button-ink: #fff; }
+header nav a:hover { text-decoration: none; box-shadow: 0 4px 10px #193b3626; }
+header nav a:focus-visible { outline: 3px solid #205862; outline-offset: 3px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  header nav a { transition: transform .18s ease, box-shadow .18s ease; }
+  header nav a:hover { transform: translateY(-2px); }
+}
+@media (max-width: 700px) {
+  header nav { width: 100%; justify-content: flex-start; }
+}
+@media (max-width: 480px) {
+  header nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
 </style></head><body id="top"><header><a class="brand" href="#top">ashoknayanam</a><nav aria-label="Main navigation"><a href="#experience">Experience</a><a href="#education">Education</a><a href="#interests">Interests</a><a href="#contact">Contact me</a></nav></header><main><section class="hero"><div class="rotor" aria-hidden="true"></div><div class="label">Mechanical engineer</div><h1>Ashok <span>Nayanam</span></h1><p class="intro">I work in thermal power operations at NTPC Farakka. My path here began on the manufacturing floor, in quality control and production planning.</p></section>
 <section class="showcase" aria-label="Career highlights"><div class="rail"><div class="panel"><span class="label">NTPC Farakka</span><h2>Power plant operations</h2><p>Equipment isolation, return to service and on-site troubleshooting.</p></div><div class="panel"><span class="label">Bharat Electronics</span><h2>Production planning</h2><p>Production scheduling in Ghaziabad and customer support for manufacturing in Bengaluru.</p></div><div class="panel"><span class="label">Haryana Industries</span><h2>Quality control</h2><p>Sheet metal manufacturing in Gurgaon.</p></div></div><div class="controls"><button id="prev" aria-label="Previous highlight">‹</button><output>1 / 3</output><button id="next" aria-label="Next highlight">›</button><button id="play">Pause</button></div></section><section class="section" id="experience"><h2>Experience</h2><div><article><h3>NTPC Farakka</h3><p>Assistant Executive (Operations) · Farakka</p><p>I handle equipment isolation, return to service and on-site troubleshooting in plant operations.</p></article><article><h3>Bharat Electronics Limited · Ghaziabad</h3><p>Project Engineer, Project Management Group · Joined April 2023</p><p>I planned production schedules, checked available stock and raised purchase requisitions for materials. I tracked production orders and coordinated with warehouse and assembly teams to meet delivery dates.</p></article><article><h3>Bharat Electronics Limited · Bengaluru</h3><p>Project Engineer, Production Control and Customer Support · August 2018 – February 2023</p><p>I coordinated vendors, product assurance and quality control against the production schedule. I also trained customers on site and provided technical support.</p></article><article><h3>Haryana Industries</h3><p>Quality Control Engineer · Gurgaon · July 2016 – July 2018</p><p>I tracked defects during production and final inspection, investigated customer complaints and followed up on corrective actions in sheet metal manufacturing.</p></article></div></section>
 <section class="section" id="education"><h2>Education</h2><div><article><h3>M.Tech in Thermal Engineering</h3><p>Bhabha Engineering Research Institute, Bhopal · 2025–2027, in progress</p></article><article><h3>B.Tech in Mechanical Engineering</h3><p>RGPV, Bhopal · May 2012 – July 2016 · Honours</p></article></div></section>
